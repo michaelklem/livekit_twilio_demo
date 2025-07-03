@@ -6,11 +6,7 @@ from dotenv import load_dotenv
 async def main():
   load_dotenv()
 
-  livekit_api = api.LiveKitAPI(
-    # url=os.getenv("LIVEKIT_URL"),
-    # api_key=os.getenv("LIVEKIT_API_KEY"),
-    # api_secret=os.getenv("LIVEKIT_API_SECRET"),
-  )
+  livekit_api = api.LiveKitAPI()
 
   rule = api.SIPDispatchRule(
     dispatch_rule_individual = api.SIPDispatchRuleIndividual(
@@ -25,13 +21,6 @@ async def main():
   room_config = api.RoomConfiguration(
     agents = [agent]
   )
-
-  # request = livekit_api.CreateSIPDispatchRuleRequest(
-  #   name = "My dispatch rule",
-  #   trunk_ids = ["ST_5hyaMppN7aTe"],
-  #   rule = rule,
-  #   room_config = room_config,
-  # )
 
   request = api.CreateSIPDispatchRuleRequest(
     rule = rule,

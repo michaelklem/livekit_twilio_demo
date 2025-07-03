@@ -4,3 +4,4 @@ livekit-plugins-openai>=0.10.17,<1.0.0
 python-dotenv~=1.0
 twilio
 openai
+ 

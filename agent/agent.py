@@ -3,7 +3,6 @@ import os
 import logging
 from livekit import rtc
 from livekit.agents import (AutoSubscribe, JobContext, WorkerOptions, cli, llm)
-# from livekit.agents import *
 from livekit.agents.multimodal import MultimodalAgent
 from livekit.plugins import openai
 from dotenv import load_dotenv
@@ -21,7 +20,6 @@ log.info(f"instructions: {instructions_doc}")
 async def main_entry(ctx: JobContext):
   log.info(f"Initializing agent")
   open_api_key = os.getenv("OPENAI_API_KEY")
-  api_key = os.getenv("LIVEKIT_API_KEY")
 
   await ctx.connect(auto_subscribe=AutoSubscribe.AUDIO_ONLY)
 
@@ -48,9 +46,6 @@ async def main_entry(ctx: JobContext):
 
   session_instance.response.create()
 
-  # await ctx.wait_for_job_complete()
-
-  # await ctx.disconnect()
 
 if __name__ == "__main__":
   log.info("Starting agent")
